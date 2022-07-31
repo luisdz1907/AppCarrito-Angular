@@ -1,0 +1,51 @@
+<div class="container">
+  <h2>Carrito de compra</h2>
+
+  <div>
+    <button class="mt-2 mb-2" mat-flat-button color="primary" (click)="Clearcart()">
+      Vaciar Carrito
+    </button>
+  </div>
+
+    <mat-card class="mb-3">
+      <table class="table">
+        <thead>
+          <tr>
+            <th scope="col">Producto</th>
+            <th scope="col">Precio</th>
+            <th scope="col">Opciones</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr *ngFor="let item of product">
+            <td>{{ item.nombre }}</td>
+            <td>{{ item.precioVenta }}</td>
+            <td>
+              <button mat-raised-button color="primary" (click)="deleteProduct(item.id)"><Span><i class="fa-solid fa-trash"></i></Span></button>
+            </td>
+          </tr>
+        </tbody>
+      </table>
+    </mat-card>
+    <span class="txtSum mt-3"> Total a pagar: {{suma}}</span>
+    <mat-card class="mt-3">
+      <div class="col d-felx mt-3">
+        <div class="form-group">
+          <label class="fs-6 mb-2" for="categoria">Clientes</label>
+          <select
+            class="form-control"
+            id="categoria"
+            name="categoria"
+            required
+          >
+            <option *ngFor="let cl of cliente" [ngValue]="cl">
+              {{ cl.nombre }}
+            </option>
+          </select>
+        </div>
+      </div>
+    </mat-card>
+    <button class="fnPedido" mat-raised-button color="warn">Finalizar Pedido</button>
+
+</div>
+

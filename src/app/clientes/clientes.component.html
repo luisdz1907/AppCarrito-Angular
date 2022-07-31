@@ -1,0 +1,59 @@
+<div class="grid-container">
+  <div class="container">
+    <h1 class="mat-h1">Clientes</h1>
+    <div>
+      <button
+        class="mt-2 mb-2"
+        mat-flat-button
+        color="primary"
+        routerLink="/clientes/formulario-cliente"
+      >
+        Agregar Cliente
+      </button>
+    </div>
+
+    <mat-card>
+
+      <div class="alert alert-info" *ngIf="clientes.length == 0">
+      <span><i class="fa-solid fa-triangle-exclamation"></i></span> No hay registro en la base de datos.
+    </div>
+
+      <table class="table caption-top table-hover" *ngIf="clientes.length > 0">
+        <caption>
+          Lista de clientes
+        </caption>
+        <thead>
+          <tr class="text-center">
+            <th>#</th>
+            <th>Nombre</th>
+            <th>Apellidos</th>
+            <th>Direccion</th>
+            <th>Documento</th>
+            <th>Fecha Nacimiento</th>
+            <th>Telefono</th>
+            <th>Opciones</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr class="text-center" *ngFor="let cliente of clientes">
+            <td>{{ cliente.id }}</td>
+            <td>{{ cliente.nombre }}</td>
+            <td>{{ cliente.apellidos }}</td>
+            <td>{{ cliente.direccion }}</td>
+            <td>{{ cliente.documento }}</td>
+            <td>{{ cliente.fechaNacimiento }}</td>
+            <td>{{ cliente.telefono }}</td>
+            <td>
+              <button mat-flat-button color="primary" [routerLink]="['/clientes/formulario-cliente', cliente.id]">
+                <i class="fa-solid fa-pen-to-square"></i>
+              </button>
+              <button mat-flat-button color="warn" (click)="deleteCliente(cliente)">
+                <i class="fa-solid fa-trash"></i>
+              </button>
+            </td>
+          </tr>
+        </tbody>
+      </table>
+    </mat-card>
+  </div>
+</div>

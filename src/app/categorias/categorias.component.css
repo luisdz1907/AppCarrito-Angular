@@ -1,0 +1,62 @@
+.grid-container {
+  margin: 20px;
+}
+
+.dashboard-card {
+  position: absolute;
+  top: 15px;
+  left: 15px;
+  right: 15px;
+  bottom: 15px;
+}
+
+.more-button {
+  position: absolute;
+  top: 5px;
+  right: 10px;
+}
+
+.dashboard-card-content {
+  text-align: center;
+}
+li{
+  list-style: none;
+  background-color: #0078AA;
+  padding: 0;
+  width: 55px;
+  border-radius: 6px;
+  }
+
+  .btn-ac{
+    color: #fff;
+    text-align: center;
+
+  }
+
+  .btn-ag{
+    margin-left: 50px;
+    margin-top: -5px;
+    padding: 8px;
+    color: #fff;
+    background-color: #0078AA;
+  }
+  .contenedor-p{
+    background-color: white;
+    margin-top: 80px;
+    height:400px;
+    width: 100%;
+    border-radius: 10px;
+    padding: 0 20px;
+  }
+  td button{
+    margin-left: 5px;
+  }
+  .table > tbody > tr:hover {
+    background-color: #F2F2F2;
+    cursor: pointer;
+  }
+  .card{
+    width: 80%;
+    margin: 0 auto;
+    margin-top: 100px;
+  }

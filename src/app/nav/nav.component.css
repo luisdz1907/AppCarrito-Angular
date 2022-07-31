@@ -1,0 +1,50 @@
+.sidenav-container {
+  height: 100%;
+}
+
+.sidenav {
+  width: 263px;
+  background-color: var(--pink);
+}
+.sidenav h1{
+  color: var(--white);
+  text-align: center;
+  font-weight: bold;
+  padding: 1rem 0;
+  font-family: 'Poppins', sans-serif;
+}
+
+.sidenav .mat-toolbar {
+  background: inherit;
+}
+
+.mat-toolbar.mat-primary {
+  position: sticky;
+  top: 0;
+  z-index: 1;
+}
+.mat-nav-list a{
+  color: var(--white);
+  font-size: 15px;
+  text-align: center;
+  margin-left: 10px;
+  font-weight: 300;
+  margin-top: 10px;
+}
+.mat-nav-list a:hover{
+  border-bottom: 1.5px solid var(--white);
+}
+.mat-nav-list span{
+  margin-right: 11px;
+  font-size: 12px;
+  color: var(--white);
+  font-weight: 200;
+}
+
+.ic-right{
+  position: absolute;
+  right: 17px;
+}
+.toolbar{
+  background-color: var(--white);
+}

@@ -1,0 +1,14 @@
+:root {
+  --blue-dark: #293045;
+  --blue-light: #7281f6;
+  --pink: #e91e63;
+  --white: #ffffff;
+  --black: #151515;
+}
+h1{
+  margin: 0;
+  font-family: 'Poppins', sans-serif;
+}
+body {
+  margin: 0;
+}

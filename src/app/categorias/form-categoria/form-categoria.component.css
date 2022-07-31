@@ -1,0 +1,9 @@
+.container{
+  height: 80vh;
+}
+mat-card{
+  width: 70%;
+  margin: 0 auto;
+  position: relative;
+  top: 150px;
+}

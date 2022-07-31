@@ -1,0 +1,53 @@
+<div class="container">
+  <mat-card class="mt-3">
+    <h5 class="fw-bold fs-4">Complete el formulario</h5>
+    <form #categoriaForm="ngForm">
+      <div class="mb-3">
+        <label for="nombreCategoria" class="form-label fs-6"
+          >Nombre de la categoria</label
+        >
+        <input
+          type="text"
+          class="form-control"
+          id="nombreProducto"
+          [(ngModel)]="categoria.nombre"
+          name="nombreCategoria"
+          required
+          #nombre="ngModel"
+        />
+        <div class="alert alert-danger" *ngIf="nombre.invalid && (nombre.dirty || nombre.touched)">
+          <div *ngIf="nombre.errors?.['required']">
+            El nombre de la categoria es requerido.
+          </div>
+        </div>
+      </div>
+
+      <div class="mt-3">
+        <button
+          mat-flat-button
+          color="primary"
+          (click)="createCategoria()"
+          *ngIf="!categoria.id; else elseBlock"
+          [disabled]="!categoriaForm.form.valid"
+        >
+          Guardar
+        </button>
+
+        <button
+          class="ms-1"
+          mat-flat-button
+          color="warn"
+          routerLink="/categorias"
+        >
+          Cancelar
+        </button>
+
+        <ng-template #elseBlock>
+          <button mat-flat-button color="primary" (click)="createCategoria()">
+            Actualizar
+          </button>
+        </ng-template>
+      </div>
+    </form>
+  </mat-card>
+</div>

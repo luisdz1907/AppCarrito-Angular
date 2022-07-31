@@ -1,0 +1,89 @@
+<div class="grid-container">
+  <div class="container">
+    <h1 class="mat-h1">Productos</h1>
+    <div>
+      <button
+        class="mt-2 mb-2"
+        mat-flat-button
+        color="primary"
+        routerLink="/productos/formulario-producto"
+      >
+        Agregar Producto
+      </button>
+    </div>
+
+    <mat-card>
+      <div class="alert alert-info" *ngIf="productos.length == 0">
+        <span><i class="fa-solid fa-triangle-exclamation"></i></span> No hay
+        registro en la base de datos.
+      </div>
+
+      <table class="table caption-top table-hover" *ngIf="productos.length > 0">
+        <caption>
+          Lista de productos
+        </caption>
+        <thead>
+          <tr class="text-center">
+            <th>#</th>
+            <th>Nombre</th>
+            <th>Marca</th>
+            <th>Stock</th>
+            <th>Fecha Registro</th>
+            <th>Descripcion</th>
+            <th>Precio Compra</th>
+            <th>Precio Venta</th>
+            <th>Opciones</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr
+            class="text-center"
+            *ngFor="
+              let producto of productos
+                | paginate
+                  : {
+                      itemsPerPage: tableSize,
+                      currentPage: page,
+                      totalItems: count
+                    };
+              let i = index
+            "
+          >
+            <td>{{ producto.id }}</td>
+            <td>{{ producto.nombre }}</td>
+            <td>{{ producto.marca }}</td>
+            <td>{{ producto.stock }}</td>
+            <td>{{ producto.fechaRegistro }}</td>
+            <td>{{ producto.descripcion }}</td>
+            <td>{{ producto.precioCompra }}</td>
+            <td>{{ producto.precioVenta }}</td>
+            <td>
+              <button
+                mat-flat-button
+                color="primary"
+                [routerLink]="['/productos/formulario-producto', producto.id]"
+              >
+                <i class="fa-solid fa-pen-to-square"></i>
+              </button>
+              <button
+                mat-flat-button
+                color="warn"
+                (click)="deleteProducto(producto)"
+              >
+                <i class="fa-solid fa-trash"></i>
+              </button>
+            </td>
+          </tr>
+        </tbody>
+      </table>
+      <div class="d-flex justify-content-center" *ngIf="productos.length > 0">
+        <pagination-controls
+          previousLabel="Anterior"
+          nextLabel="Siguiente"
+          (pageChange)="onTableDataChange($event)"
+        >
+        </pagination-controls>
+      </div>
+    </mat-card>
+  </div>
+</div>

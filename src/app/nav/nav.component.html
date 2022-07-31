@@ -1,0 +1,34 @@
+<mat-sidenav-container class="sidenav-container">
+  <mat-sidenav #drawer class="sidenav" fixedInViewport
+      [attr.role]="(isHandset$ | async) ? 'dialog' : 'navigation'"
+      [mode]="(isHandset$ | async) ? 'over' : 'side'"
+      [opened]="(isHandset$ | async) === false">
+      <h1> <span><i class="fa-solid fa-mobile-screen"></i></span> Cel-Express.</h1>
+    <mat-nav-list>
+
+      <a mat-list-item routerLink="/productos"><span><i class="fa-solid fa-box-open"></i></span> Productos <span class="ic-right" ><i class="fa-solid fa-chevron-right"></i></span></a>
+
+      <a mat-list-item routerLink="/lista-productos"><span><i class="fa-solid fa-store"></i></span> Lista Productos <span class="ic-right" ><i class="fa-solid fa-chevron-right"></i></span></a>
+
+      <a mat-list-item routerLink="/categorias"><span><i class="fa-solid fa-tags"></i></span> Categorias <span class="ic-right" ><i class="fa-solid fa-chevron-right"></i></span></a>
+
+      <a mat-list-item routerLink="/clientes"><span><i class="fa-solid fa-users"></i></span> Clientes <span class="ic-right" ><i class="fa-solid fa-chevron-right"></i></span></a>
+    </mat-nav-list>
+  </mat-sidenav>
+  <mat-sidenav-content>
+    <mat-toolbar class="toolbar">
+      <button
+        type="button"
+        aria-label="Toggle sidenav"
+        mat-icon-button
+        (click)="drawer.toggle()"
+        *ngIf="isHandset$ | async">
+        <mat-icon aria-label="Side nav toggle icon"><i class="fa-solid fa-bars"></i></mat-icon>
+      </button>
+      <span>Sistema De Ventas</span>
+    </mat-toolbar>
+
+    <router-outlet></router-outlet>
+
+  </mat-sidenav-content>
+</mat-sidenav-container>

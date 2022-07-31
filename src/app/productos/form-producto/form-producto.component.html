@@ -1,0 +1,199 @@
+<div class="container">
+  <mat-card class="mt-3">
+    <h5 class="fw-bold fs-4">Complete el formulario</h5>
+    <form #productoForm="ngForm">
+      <div class="form-group">
+        <div class="col">
+          <div class="mb-3">
+            <label for="nombreProducto" class="form-label fs-6"
+              >Nombre del producto</label
+            >
+            <input
+              type="text"
+              class="form-control"
+              id="nombreProducto"
+              [(ngModel)]="producto.nombre"
+              name="nombreProducto"
+              required
+              minlength="4"
+              #nombre="ngModel"
+            />
+            <div
+              class="alert alert-danger"
+              *ngIf="nombre.invalid && (nombre.dirty || nombre.touched)"
+            >
+              <div *ngIf="nombre.errors?.['required']">
+                El nombre es requerido.
+              </div>
+              <div *ngIf="nombre.errors?.['minlength']">
+                El nombre debe tener almenos 4 caracteres.
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="col d-flex">
+          <div class="mb-3">
+            <label for="precioCompra" class="form-label fs-6"
+              >Precio Compra</label
+            >
+            <input
+              type="number"
+              class="form-control"
+              id="precioCompra"
+              [(ngModel)]="producto.precioCompra"
+              name="precioCompra"
+              required
+              #precioC="ngModel"
+            />
+            <div
+              class="alert alert-danger"
+              *ngIf="precioC.invalid && (precioC.dirty || precioC.touched)"
+            >
+              <div *ngIf="precioC.errors?.['required']">
+                El precio de la compra es requerido.
+              </div>
+            </div>
+          </div>
+          <div class="ms-1 mb-3">
+            <label for="precioVenta" class="form-label fs-6"
+              >Precio Venta</label
+            >
+            <input
+              type="number"
+              class="form-control"
+              id="precioVenta"
+              [(ngModel)]="producto.precioVenta"
+              name="precioVenta"
+              required
+              #precioV="ngModel"
+            />
+            <div
+              class="alert alert-danger"
+              *ngIf="precioV.invalid && (precioV.dirty || precioV.touched)"
+            >
+              <div *ngIf="precioV.errors?.['required']">
+                El precio de la venta es requerido.
+              </div>
+            </div>
+          </div>
+          <div class="ms-1 mb-3">
+            <label for="cantidad" class="form-label fs-6">Cantidad</label>
+            <input
+              type="text"
+              class="form-control"
+              id="cantidad"
+              name="cantidad"
+              [(ngModel)]="producto.stock"
+              required
+              #cantidad="ngModel"
+            />
+            <div
+              class="alert alert-danger"
+              *ngIf="cantidad.invalid && (cantidad.dirty || cantidad.touched)"
+            >
+              <div *ngIf="cantidad.errors?.['required']">
+                La cantidad es requerida.
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="col">
+          <div class="mb-3">
+            <label for="nombreProducto" class="form-label fs-6"
+              >Marca del producto</label
+            >
+            <input
+              type="text"
+              class="form-control"
+              id="marcaProducto"
+              [(ngModel)]="producto.marca"
+              name="marcaProducto"
+              required
+              #marca="ngModel"
+            />
+            <div
+              class="alert alert-danger"
+              *ngIf="marca.invalid && (marca.dirty || marca.touched)"
+            >
+              <div *ngIf="marca.errors?.['required']">
+                La marca es requerida.
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="form-floating">
+          <textarea
+            name="descripcion"
+            class="form-control"
+            placeholder="Descripcion"
+            id="floatingTextarea2"
+            style="height: 100px"
+            [(ngModel)]="producto.descripcion"
+            required
+            #descripcion="ngModel"
+            minlength="4"
+          ></textarea>
+          <div
+            class="alert alert-danger"
+            *ngIf="
+              descripcion.invalid && (descripcion.dirty || descripcion.touched)
+            "
+          >
+            <div *ngIf="descripcion.errors?.['required']">
+              La descripcion es requerida.
+            </div>
+            <div *ngIf="descripcion.errors?.['minlength']">
+              El nombre debe tener almenos 4 caracteres
+            </div>
+          </div>
+          <label for="floatingTextarea2">Descripcion del producto</label>
+        </div>
+
+        <div class="col d-felx mt-3">
+          <div class="form-group">
+            <label class="fs-6 mb-2" for="categoria">Categorias</label>
+            <select
+              [(ngModel)]="producto.categoria"
+              class="form-control"
+              id="categoria"
+              name="categoria"
+              required
+            >
+              <option *ngFor="let catg of categoria" [ngValue]="catg">
+                {{ catg.nombre }}
+              </option>
+            </select>
+          </div>
+        </div>
+      </div>
+
+      <div class="mt-3">
+        <button
+          mat-flat-button
+          color="primary"
+          (click)="create()"
+          *ngIf="!producto.id; else elseBlock"
+          [disabled]="!productoForm.form.valid"
+        >
+          Guardar
+        </button>
+
+        <button
+          class="ms-1"
+          mat-flat-button
+          color="warn"
+          routerLink="/productos"
+        >
+          Cancelar
+        </button>
+
+        <ng-template #elseBlock>
+          <button mat-flat-button color="primary" (click)="create()">
+            Actualizar
+          </button>
+        </ng-template>
+      </div>
+    </form>
+  </mat-card>
+</div>

@@ -1,0 +1,43 @@
+<div class="grid-container">
+  <h1 class="mat-h1">Categorias</h1>
+<mat-card class="card">
+  <div class="container">
+    <div>
+      <button class="mt-2 mb-2" mat-flat-button color="primary" routerLink="/categorias/formulario-categoria">
+        Agregar Categoria
+      </button>
+    </div>
+
+    <div class="alert alert-info" *ngIf="categorias.length == 0">
+        <span><i class="fa-solid fa-triangle-exclamation"></i></span> No hay registro en la base de datos.
+      </div>
+    <table style="width: 70% ; margin:0 auto;" class="table caption-top table-hover" *ngIf="categorias.length > 0">
+      <caption>
+        Lista de productos
+      </caption>
+      <thead>
+        <tr class="text-center">
+          <th>#</th>
+          <th>Nombre Categoria</th>
+          <th>Opciones</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr class="text-center" *ngFor="let categoria of categorias">
+          <td>{{ categoria.id }}</td>
+          <td>{{ categoria.nombre }}</td>
+          <td>
+            <button mat-flat-button color="primary" [routerLink]="['/categorias/formulario-categoria' , categoria.id]">
+              <i class="fa-solid fa-pen-to-square"></i>
+            </button>
+            <button mat-flat-button color="warn" (click)="deleteCategoria(categoria)">
+              <i class="fa-solid fa-trash"></i>
+            </button>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+</mat-card>
+
+</div>

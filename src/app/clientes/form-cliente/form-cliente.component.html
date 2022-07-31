@@ -1,0 +1,152 @@
+<div class="container">
+  <mat-card>
+    <h5 class="fw-bold fs-4">Complete el formulario</h5>
+    <form #clienteForm="ngForm">
+      <div class="form-group">
+        <div class="col">
+          <div class="mb-3">
+            <label for="nombre" class="form-label fs-6">Nombre</label>
+            <input
+              type="text"
+              class="form-control"
+              id="nombre"
+              [(ngModel)]="cliente.nombre"
+              name="nombre"
+              required
+              #nombre="ngModel"
+            />
+            <div class="alert alert-danger" *ngIf="nombre.invalid && (nombre.dirty || nombre.touched)">
+              <div *ngIf="nombre.errors?.['required']">
+                El nombre del cliente es requerido.
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="col">
+          <div class="mb-3">
+            <label for="apellidos" class="form-label fs-6">Apellidos</label>
+            <input
+              type="text"
+              class="form-control"
+              id="apellidos"
+              [(ngModel)]="cliente.apellidos"
+              name="apellidos"
+              required
+              #apellido="ngModel"
+            />
+            <div class="alert alert-danger" *ngIf="apellido.invalid && (apellido.dirty || apellido.touched)">
+              <div *ngIf="apellido.errors?.['required']">
+                El apellido del cliente es requerido.
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="col">
+          <div class="mb-3">
+            <label for="direccion" class="form-label fs-6">Direccion</label>
+            <input
+              type="text"
+              class="form-control"
+              id="direccion"
+              [(ngModel)]="cliente.direccion"
+              name="direccion"
+              required
+              #direccion="ngModel"
+            />
+            <div class="alert alert-danger" *ngIf="direccion.invalid && (direccion.dirty || direccion.touched)">
+              <div *ngIf="direccion.errors?.['required']">
+                La direccion es requerida.
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="col">
+          <div class="mb-3">
+            <label for="documento" class="form-label fs-6">Documento</label>
+            <input
+              type="text"
+              class="form-control"
+              id="documento"
+              [(ngModel)]="cliente.documento"
+              name="documento"
+              required
+              #documento="ngModel"
+            />
+            <div class="alert alert-danger" *ngIf="documento.invalid && (nombre.dirty || documento.touched)">
+              <div *ngIf="documento.errors?.['required']">
+                El numero de documento es requerido.
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="col">
+          <div class="mb-3">
+            <label for="fechaNacimiento" class="form-label fs-6"
+              >Fecha Nacimiento</label
+            >
+            <input
+              type="date"
+              class="form-control"
+              id="fechaNacimiento"
+              [(ngModel)]="cliente.fechaNacimiento"
+              name="fechaNacimiento"
+              required
+              #fechaN="ngModel"
+            />
+            <div class="alert alert-danger" *ngIf="fechaN.invalid && (fechaN.dirty || fechaN.touched)">
+              <div *ngIf="fechaN.errors?.['required']">
+                La fecha de nacimiento es requerida.
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="col">
+          <div class="mb-3">
+            <label for="telefono" class="form-label fs-6">Telefono</label>
+            <input
+              type="number"
+              class="form-control"
+              id="telefono"
+              [(ngModel)]="cliente.telefono"
+              name="telefono"
+              required
+              #telefono="ngModel"
+            />
+            <div class="alert alert-danger" *ngIf="telefono.invalid && (telefono.dirty || telefono.touched)">
+              <div *ngIf="telefono.errors?.['required']">
+                El numero de telefono es requerido.
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="mt-3">
+        <button
+          mat-flat-button
+          color="primary"
+          (click)="create()"
+          *ngIf="!cliente.id; else elseBlock"
+          [disabled]="!clienteForm.form.valid"
+        >
+          Guardar
+        </button>
+
+        <button
+          class="ms-1"
+          mat-flat-button
+          color="warn"
+          routerLink="/clientes"
+        >
+          Cancelar
+        </button>
+
+        <ng-template #elseBlock>
+          <button mat-flat-button color="primary" (click)="create()">
+            Actualizar
+          </button>
+        </ng-template>
+      </div>
+    </form>
+  </mat-card>
+</div>

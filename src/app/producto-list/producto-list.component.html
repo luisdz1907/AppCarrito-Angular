@@ -1,0 +1,53 @@
+<div class="grid-container">
+  <div class="container">
+    <h1 class="mat-h1">Lista Productos</h1>
+
+    <div class="text-end">
+      <button
+        class="mt-2 mb-2"
+        mat-flat-button
+        color="primary"
+        routerLink="/cart">
+        <span><i class="fa-solid fa-cart-shopping"></i></span> Ver Carrito
+      </button>
+    </div>
+    <mat-card>
+      <div class="alert alert-info" *ngIf="productos.length == 0">
+        <span><i class="fa-solid fa-triangle-exclamation"></i></span> No hay
+        registro en la base de datos.
+      </div>
+
+      <table class="table caption-top table-hover" *ngIf="productos.length > 0">
+        <caption>
+          Lista de productos
+        </caption>
+        <thead>
+          <tr class="text-center">
+            <th>#</th>
+            <th>Nombre</th>
+            <th>Marca</th>
+            <th>Disponibles</th>
+            <th>Descripcion</th>
+            <th>Precio</th>
+            <th>Opciones</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr
+            class="text-center"
+            *ngFor="let producto of productos">
+            <td>{{ producto.id }}</td>
+            <td>{{ producto.nombre }}</td>
+            <td>{{ producto.marca }}</td>
+            <td>{{ producto.stock }}</td>
+            <td>{{ producto.descripcion }}</td>
+            <td>{{ producto.precioVenta }}</td>
+            <td>
+              <button mat-raised-button color="primary" (click)="addToCard(producto)"><Span><i class="fa-solid fa-cart-plus"></i></Span></button>
+            </td>
+          </tr>
+        </tbody>
+      </table>
+    </mat-card>
+  </div>
+</div>
